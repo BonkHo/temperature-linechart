@@ -1,5 +1,5 @@
 import React from "react";
-import { extent, scaleLinear, format } from "d3";
+import { extent, scaleLinear, scaleTime, format, timeFormat } from "d3";
 import { useData } from "./hooks/useData";
 import "./App.css";
 
@@ -23,21 +23,20 @@ const App = () => {
 	const xValue = (d) => d.timestamp;
 	const yValue = (d) => d.temperature;
 
-	const siFormat = format(".2s");
-	const xAxisTickFormat = (tickValue) => siFormat(tickValue).replace("G", "B");
+	const xAxisTickFormat = timeFormat("%a");
 
 	if (!data) {
 		return <pre>"Loading"</pre>;
 	}
 
-	const xScale = scaleLinear()
+	const xScale = scaleTime()
 		.domain(extent(data, xValue))
 		.range([0, innerWidth])
 		.nice();
 
 	const yScale = scaleLinear()
 		.domain(extent(data, yValue))
-		.range([0, innerHeight])
+		.range([innerHeight, 0])
 		.nice();
 
 	return (
