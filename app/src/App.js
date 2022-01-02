@@ -18,10 +18,10 @@ const App = () => {
 	const xAxisLabelOffset = 70;
 	const yAxisLabelOffset = -70;
 
-	const xAxisLabel = "Sepal Length";
-	const yAxisLabel = "Sepal Width";
-	const xValue = (d) => d.sepal_length;
-	const yValue = (d) => d.sepal_width;
+	const xAxisLabel = "Time";
+	const yAxisLabel = "Temperature";
+	const xValue = (d) => d.timestamp;
+	const yValue = (d) => d.temperature;
 
 	const siFormat = format(".2s");
 	const xAxisTickFormat = (tickValue) => siFormat(tickValue).replace("G", "B");
