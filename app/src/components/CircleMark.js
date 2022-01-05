@@ -8,10 +8,10 @@ const CircleMark = ({
 	yValue,
 	xValue,
 	toolTipFormat,
-	markRadius = 8,
+	markRadius = 3,
 }) => {
 	return (
-		<>
+		<g className="marks">
 			<path
 				stroke="black"
 				fill="none"
@@ -20,16 +20,11 @@ const CircleMark = ({
 					.y((d) => yScale(yValue(d)))(data)}
 			/>
 			{data.map((d) => (
-				<circle
-					className="mark"
-					cx={xScale(xValue(d))}
-					cy={yScale(yValue(d))}
-					r={markRadius}
-				>
+				<circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={markRadius}>
 					<title>{toolTipFormat(xValue(d))}</title>
 				</circle>
 			))}
-		</>
+		</g>
 	);
 };
 
