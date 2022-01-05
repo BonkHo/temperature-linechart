@@ -14,7 +14,10 @@ const CircleMark = ({
 		<>
 			<path
 				stroke="black"
-				d={line().x((d) => xScale(xValue(d)).y((d) => yScale(yValue(d)))(data))}
+				fill="none"
+				d={line()
+					.x((d) => xScale(xValue(d)))
+					.y((d) => yScale(yValue(d)))(data)}
 			/>
 			{data.map((d) => (
 				<circle
